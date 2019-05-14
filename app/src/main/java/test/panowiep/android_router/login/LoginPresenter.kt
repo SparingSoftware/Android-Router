@@ -27,7 +27,7 @@ class LoginPresenter(
     //
 
     override fun onViewCreated() {
-        //
+        view?.setupViews()
     }
 
 
@@ -37,12 +37,10 @@ class LoginPresenter(
 
     override fun loginClicked() {
         router?.navigateTo(Destination.Main(loggedUser))
-        // view?.showMain(loggedUser)
     }
 
     override fun skipClicked() {
         router?.navigateTo(Destination.Main(null))
-        // view?.showMain(null)
     }
 
 }
@@ -65,6 +63,6 @@ interface ILoginPresenter {
 
 interface ILoginView {
 
-    //
+    fun setupViews()
 
 }

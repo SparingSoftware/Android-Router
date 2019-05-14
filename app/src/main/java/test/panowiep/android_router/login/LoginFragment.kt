@@ -39,7 +39,14 @@ class LoginFragment : Fragment(), ILoginView {
         super.onViewCreated(view, savedInstanceState)
 
         presenter.onViewCreated()
+    }
 
+
+    //
+    // ILoginView
+    //
+
+    override fun setupViews() {
         loginButton.setOnClickListener {
             presenter.loginClicked()
         }
@@ -48,10 +55,4 @@ class LoginFragment : Fragment(), ILoginView {
             presenter.skipClicked()
         }
     }
-
-
-    //
-    // ILoginView
-    //
-
 }

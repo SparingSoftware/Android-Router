@@ -30,13 +30,6 @@ class LoginRouter(
         }
     }
 
-    override fun backTo(destination: Destination) {
-        //
-    }
-
-    override fun back() {
-        //
-    }
 
     //
     // Helper
