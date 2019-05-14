@@ -17,7 +17,10 @@ import java.lang.ref.WeakReference
 class LoginFragment : Fragment(), ILoginView {
 
     private val presenter: ILoginPresenter by lazy {
-        LoginPresenter(WeakReference(this))
+        LoginPresenter(
+            WeakReference(this),
+            LoginRouter(WeakReference(this))
+        )
     }
 
     //
@@ -51,10 +54,4 @@ class LoginFragment : Fragment(), ILoginView {
     // ILoginView
     //
 
-    override fun showMain(user: User?) {
-        val navController = findNavController()
-        val bundle = Bundle()
-        bundle.putParcelable("user", user)
-        navController.navigate(R.id.showMain, bundle)
-    }
 }

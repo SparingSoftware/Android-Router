@@ -1,10 +1,12 @@
 package test.panowiep.android_router.about;
 
+import test.panowiep.android_router.router.IRouter
 import java.lang.ref.WeakReference
 
 
 class AboutPresenter(
-    private val viewRef: WeakReference<IAboutView>?
+    private val viewRef: WeakReference<IAboutView>?,
+    private val router: IRouter
 ) : IAboutPresenter {
 
     //
@@ -28,7 +30,7 @@ class AboutPresenter(
     //
 
     override fun exitClicked() {
-        view?.exit()
+        router?.back()
     }
 
 }
@@ -51,7 +53,5 @@ interface IAboutPresenter {
 interface IAboutView {
 
     fun setupViews()
-
-    fun exit()
 
 }

@@ -9,11 +9,14 @@ import io.reactivex.rxkotlin.addTo
 import test.panowiep.android_router.model.User
 import test.panowiep.android_router.observer.EventObserver
 import test.panowiep.android_router.observer.RxEvent
+import test.panowiep.android_router.router.Destination
+import test.panowiep.android_router.router.IRouter
 import java.lang.ref.WeakReference
 
 
 class MainTabPresenter(
     private val viewRef: WeakReference<IMainTabView>?,
+    private val router: IRouter?,
     private val user: User?,
     private val eventObserver: EventObserver
 ) : IMainTabPresenter {
@@ -48,7 +51,7 @@ class MainTabPresenter(
     //
 
     override fun aboutClicked() {
-        view?.showAbout()
+        router?.navigateTo(Destination.About())
     }
 
 
@@ -60,7 +63,7 @@ class MainTabPresenter(
         disposable = eventObserver
             .subscribe(RxEvent.ShowProfile::class.java)
             .subscribe { event ->
-                view?.showProfile(event.user)
+                router?.navigateTo(Destination.Profile(event.user))
             }
     }
 
@@ -87,9 +90,5 @@ interface IMainTabView {
 
     fun setupViews(user: User?)
 
-    //
-
-    fun showProfile(user: User?)
-    fun showAbout()
 
 }

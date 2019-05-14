@@ -26,6 +26,7 @@ class MainTabFragment : Fragment(), IMainTabView {
     private val presenter: IMainTabPresenter by lazy {
         MainTabPresenter(
             WeakReference(this),
+            MainTabRouterRouter(WeakReference(this)),
             arguments?.getParcelable("user"),
             EventObserver()
         )
@@ -65,17 +66,6 @@ class MainTabFragment : Fragment(), IMainTabView {
         setHasOptionsMenu(true)
     }
 
-
-    override fun showProfile(user: User?) {
-        val navController = findNavController()
-        val bundle = Bundle()
-        bundle.putParcelable("user", user)
-        navController.navigate(R.id.showProfile, bundle)
-    }
-
-    override fun showAbout() {
-        startActivity(Intent(context, AboutActivity::class.java))
-    }
 
     //
     // Menu

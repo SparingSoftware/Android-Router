@@ -3,10 +3,13 @@ package test.panowiep.android_router.login
 import test.panowiep.android_router.model.User
 import java.lang.ref.WeakReference
 import android.util.Log;
+import test.panowiep.android_router.router.Destination
+import test.panowiep.android_router.router.IRouter
 
 
 class LoginPresenter(
-    private val viewRef: WeakReference<ILoginView>?
+    private val viewRef: WeakReference<ILoginView>?,
+    private val router: IRouter?
 ) : ILoginPresenter {
 
     private var loggedUser = User("Piotr")
@@ -33,11 +36,13 @@ class LoginPresenter(
     //
 
     override fun loginClicked() {
-        view?.showMain(loggedUser)
+        router?.navigateTo(Destination.Main(loggedUser))
+        // view?.showMain(loggedUser)
     }
 
     override fun skipClicked() {
-        view?.showMain(null)
+        router?.navigateTo(Destination.Main(null))
+        // view?.showMain(null)
     }
 
 }
@@ -60,6 +65,6 @@ interface ILoginPresenter {
 
 interface ILoginView {
 
-    fun showMain(user: User?)
+    //
 
 }

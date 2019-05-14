@@ -10,7 +10,10 @@ class AboutActivity : AppCompatActivity(), IAboutView {
 
 
     private val presenter: IAboutPresenter by lazy {
-        AboutPresenter(WeakReference(this))
+        AboutPresenter(
+            WeakReference(this),
+            AboutRouter(WeakReference(this))
+        )
     }
 
     //
@@ -32,10 +35,6 @@ class AboutActivity : AppCompatActivity(), IAboutView {
         exitButton.setOnClickListener {
             presenter.exitClicked()
         }
-    }
-
-    override fun exit() {
-        finish()
     }
 
 }
