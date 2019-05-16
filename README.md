@@ -16,12 +16,12 @@ On branch [router-simple](https://github.com/SparingSoftware/Android-Router/tree
 
 In standard approach Presenter (or view itself) will call method to navigate:
 **In Presener / View:**
-```
+```kotlin
 func loginClicked() {
   view?.showMain(loggedUser)
 }
 ```
-```
+```kotlin
 override fun showMain(user: User?) {
   val navController = findNavController()
   val bundle = Bundle()
@@ -31,7 +31,7 @@ override fun showMain(user: User?) {
 ```
 
 With Router we move navigation method to seperate module:
-```
+```kotlin
 class LoginRouter(
   // ...
 
@@ -48,7 +48,7 @@ class LoginRouter(
 }
 ```
 And a call is as simple as:
-```
+```kotlin
 override fun loginClicked() {
   router?.navigateTo(Destination.Main(loggedUser))
 }
