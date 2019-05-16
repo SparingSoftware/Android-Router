@@ -55,4 +55,11 @@ override fun loginClicked() {
 ```
 
 ### Tests
-...
+You can easily test your Logic with router:
+```kotlin
+@Test
+fun test_login() {
+  presenter.loginClicked()
+  verify(router).navigateTo(Destination.Main(User("Piotr")))
+}
+```
