@@ -17,7 +17,7 @@ On branch [router-simple](https://github.com/SparingSoftware/Android-Router/tree
 In standard approach Presenter (or view itself) will call method to navigate:
 **In Presener / View:**
 ```kotlin
-func loginClicked() {
+fun loginClicked() {
   view?.showMain(loggedUser)
 }
 ```
