@@ -53,3 +53,6 @@ override fun loginClicked() {
   router?.navigateTo(Destination.Main(loggedUser))
 }
 ```
+
+### Tests
+...
